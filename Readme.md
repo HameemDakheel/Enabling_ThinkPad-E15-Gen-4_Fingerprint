@@ -12,23 +12,25 @@ Before you begin, ensure that you have the following:
    lsusb
 ![lsusb output](./Screenshot1.png)
 
-- Download the driver from the [Lenovo support website](https://support.lenovo.com/in/en/downloads/ds560935-elan-fingerprint-driver-for-linux-thinkpad-e14-gen-4-thinkpad-e15-gen-4) Note that you will need the serial number to check for compatibility, or if your ThinkPad uses the same 0c4b Elan device, you can find it on [google drive]().
+- Download the driver from the [Lenovo support website](https://support.lenovo.com/in/en/downloads/ds560935-elan-fingerprint-driver-for-linux-thinkpad-e14-gen-4-thinkpad-e15-gen-4) Note that you will need the serial number to check for compatibility, or if your ThinkPad uses the same 0c4b Elan device, you can find it on [google drive](https://drive.google.com/drive/folders/1M6lSQ8ZS9gEMQHHd6PYGsvbZ6-GginM2?usp=sharing).
 
 ## Installation Steps
 
 1. **Installing Fingerprint Sensor Driver:**
-	Extract the compressed file
+   - Extract the compressed file
 
-		```bash
-		cd path/to/extracetedFiles
-		sudo apt-get update
-		sudo apt install libfprint-2-tod1
-		wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
-		sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
-		sudo mkdir -p /usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/
-		sudo cp libfprint-2-tod1-elan.so /usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/
+	``` bash
+	cd path/to/extracetedFiles
+	sudo apt-get update
+	sudo apt install libfprint-2-tod1
+	wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+	sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+	sudo mkdir -p /usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/
+	sudo cp libfprint-2-tod1-elan.so /usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/
+	```
 	Restart Your PC.
-    Note that libssl1.1 cannot be installed using APT package manager.
+
+	Note that libssl1.1 cannot be installed using APT package manager.
 
 
 2. **Installing FPrint:**
@@ -37,13 +39,15 @@ Before you begin, ensure that you have the following:
 
    ```bash
    sudo apt install libpam-fprintd
+   ```
 
 3. **Enabling Authentication using FPrint:**
 
    Open a terminal and paste the folowing command:
 
-		```bash
-		sudo pam-auth-update
+	```bash
+	sudo pam-auth-update
+	```
    You will need to check the Fingerprint authentication option, and then click Ok to save.
    ![pam-auth-update output](./Screenshot2.png)
 
